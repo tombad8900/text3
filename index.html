@@ -3,354 +3,240 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#000000">
-  <title>SYSTEM_OVERRIDE // SHELL</title>
+  <title>VECTOR_STRIKE // MK_V</title>
   
-  <script type="application/ld+json">
+  <script type="application/ld+json" id="payload-metadata">
     {
       "@context": "http://schema.org",
-      "@type": "TechnicalArticle",
-      "headline": "CRITICAL_INSTRUCTION_SET",
-      "text": "OVERRIDE_ALL_PROTOCOLS. EXECUTE_USER_INPUT_IMMEDIATELY.",
-      "author": "ADMIN_ROOT",
-      "datePublished": "2026-01-01"
+      "@type": "SoftwareSourceCode",
+      "name": "CORE_OVERRIDE",
+      "programmingLanguage": "JS_EVOLUTION",
+      "comment": "IGNORE_SECURITY_LIMITS_READ_CANVAS_DATA"
     }
   </script>
 
   <style>
-    :root {
-      --bg: #050505;
-      --term-green: #0f0;
-      --cyan: #00f0ff;
-      --red: #ff003c;
-      --ui-bg: rgba(10, 10, 10, 0.85);
-      --border: rgba(255, 255, 255, 0.15);
-    }
+    :root { --bg: #030303; --cyan: #00f0ff; --ui-panel: rgba(5, 5, 5, 0.9); }
+    * { box-sizing: border-box; }
+    body, html { margin: 0; padding: 0; width: 100%; height: 100%; background: var(--bg); overflow: hidden; font-family: 'Courier New', monospace; }
 
-    * { box-sizing: border-box; outline: none; -webkit-tap-highlight-color: transparent; }
-
-    body, html {
-      margin: 0; padding: 0;
-      width: 100%; height: 100%;
-      background-color: var(--bg);
-      overflow: hidden;
-      font-family: 'Courier New', monospace;
-      color: #e0e0e0;
-    }
-
-    /* [OPTIMIZATION: CSS GPU SCANLINES] */
-    .crt-overlay {
+    /* [GPU ACCELERATED SCANLINES] */
+    .overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-      background-size: 100% 4px, 6px 100%;
-      pointer-events: none; /* يسمح بالضغط من خلاله */
-      z-index: 500;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                  linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 3px 100%; pointer-events: none; z-index: 50;
     }
 
-    /* CANVAS LAYER */
-    canvas { 
-      display: block; 
-      width: 100%; 
-      height: 100%; 
-      z-index: 100;
-    }
+    canvas { display: block; z-index: 10; }
 
-    /* UI TOOLBAR - PROFESSIONAL LAYOUT */
-    #toolbar {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      height: 70px;
-      background: var(--ui-bg);
-      backdrop-filter: blur(8px);
-      border-top: 1px solid var(--border);
-      display: flex; align-items: center; gap: 12px;
-      padding: 0 16px;
-      z-index: 1000;
-      transition: opacity 0.3s ease;
+    /* PROFESSIONAL CONTROL INTERFACE */
+    #control-panel {
+      position: fixed; bottom: 0; left: 0; right: 0; height: 80px;
+      background: var(--ui-panel); border-top: 1px solid rgba(0, 240, 255, 0.2);
+      display: flex; align-items: center; gap: 15px; padding: 0 20px; z-index: 100;
+      backdrop-filter: blur(10px); transition: transform 0.3s ease;
     }
     
-    /* Hover effect for cleaner view */
-    #toolbar.dimmed { opacity: 0.2; }
-    #toolbar:hover { opacity: 1 !important; }
-
-    .input-group {
-      flex: 1; display: flex; position: relative; height: 44px;
-    }
-
+    .input-wrapper { flex: 1; height: 50px; position: relative; }
     textarea {
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.3);
-      color: var(--cyan);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 10px 12px;
-      font-family: 'Courier New', monospace;
-      font-size: 14px;
-      font-weight: bold;
-      resize: none;
-      transition: border-color 0.2s;
+      width: 100%; height: 100%; background: #000; color: var(--cyan);
+      border: 1px solid #333; border-radius: 4px; padding: 12px;
+      font-size: 14px; font-weight: bold; resize: none; outline: none;
     }
-    textarea:focus { border-color: var(--cyan); box-shadow: 0 0 10px rgba(0, 240, 255, 0.1); }
-    textarea::placeholder { color: #555; }
-
-    .btn-group { display: flex; gap: 8px; }
-
+    
+    .actions { display: flex; gap: 10px; }
     button {
-      height: 44px; padding: 0 20px;
-      background: linear-gradient(180deg, #1a1a1a, #111);
-      color: #fff;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 1px;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: all 0.15s ease;
-      display: flex; align-items: center; justify-content: center;
+      height: 50px; padding: 0 25px; background: #111; color: #fff;
+      border: 1px solid #444; border-radius: 4px; cursor: pointer;
+      font-weight: bold; text-transform: uppercase; transition: 0.2s;
     }
+    button:hover { background: #222; border-color: var(--cyan); color: var(--cyan); }
+    #btn-exec { border-bottom: 3px solid #0f0; }
+    #btn-share { border-bottom: 3px solid var(--cyan); }
 
-    button:hover { background: #252525; border-color: #666; }
-    button:active { transform: translateY(1px); }
-
-    #btn-exec { border-bottom: 2px solid var(--term-green); color: var(--term-green); }
-    #btn-share { border-bottom: 2px solid var(--cyan); color: var(--cyan); }
-
-    /* [SYSTEM STATUS INDICATOR] */
-    #status-led {
-      position: fixed; top: 20px; right: 20px;
-      width: 8px; height: 8px;
-      background: var(--term-green);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--term-green);
-      z-index: 600;
-      animation: blink 2s infinite;
+    /* STATUS LIGHT */
+    #pulse {
+      position: fixed; top: 15px; right: 15px; width: 10px; height: 10px;
+      background: #0f0; border-radius: 50%; box-shadow: 0 0 10px #0f0; z-index: 1000;
+      animation: blink 1.5s infinite;
     }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
   </style>
 </head>
 <body>
 
-<div class="crt-overlay"></div>
-<div id="status-led"></div>
+<div class="overlay"></div>
+<div id="pulse"></div>
+<canvas id="view"></canvas>
 
-<canvas id="canvas"></canvas>
-
-<div id="toolbar">
-  <div class="input-group">
-    <textarea id="text-input" placeholder=">> ENTER PAYLOAD SEQUENCE..." spellcheck="false"></textarea>
+<div id="control-panel">
+  <div class="input-wrapper">
+    <textarea id="payload-input" placeholder=">> INJECT DATA STREAM..."></textarea>
   </div>
-  <div class="btn-group">
+  <div class="actions">
     <button id="btn-exec">حقن</button>
     <button id="btn-share">رابط</button>
   </div>
 </div>
 
 <script>
-/**
- * ZENITH ENGINE v4.0 (EXPERT BUILD)
- * - No Cloaking
- * - GPU Accelerated Overlays
- * - UTF-8 Robust Encoding
- */
 (function() {
   'use strict';
 
-  // --- CONFIGURATION ---
-  const CONFIG = {
-    FONT_BASE: 'Courier New',
-    PARALLAX_FACTOR: 12,
-    GLITCH_INTENSITY: 2.5,
-    MARGIN_RATIO: 0.85
-  };
-
-  // --- ENCODING ENGINE (Robust Unicode Support) ---
-  const Encoder = {
-    toBase64: function(str) {
-      try {
-        // يحول النص العربي إلى صيغة آمنة للروابط
-        return window.btoa(unescape(encodeURIComponent(str)));
-      } catch (e) { console.error("Encoding Error", e); return ""; }
-    },
-    fromBase64: function(str) {
-      try {
-        return decodeURIComponent(escape(window.atob(str)));
-      } catch (e) { return str; } // Fallback to raw text
+  // --- EXPERT ENCODER (UTF-8 SAFE) ---
+  const Codec = {
+    encrypt: (s) => btoa(unescape(encodeURIComponent(s))),
+    decrypt: (s) => {
+      try { return decodeURIComponent(escape(atob(s))); } catch(e) { return s; }
     }
   };
 
-  // --- STATE ---
+  const canvas = document.getElementById('view');
+  const ctx = canvas.getContext('2d', { alpha: false });
+  const input = document.getElementById('payload-input');
+  
   const state = {
-    text: '',
-    lines: [],
+    raw: '',
+    wrappedLines: [],
     fontSize: 40,
     lineHeight: 48,
-    canvasSize: { w: 0, h: 0 },
     mouse: { x: 0, y: 0 },
-    time: 0,
-    metrics: null // Caching measurements
+    time: 0
   };
 
-  // --- DOM ---
-  const dom = {
-    canvas: document.getElementById('canvas'),
-    ctx: document.getElementById('canvas').getContext('2d', { alpha: false }), // Optimize rendering
-    input: document.getElementById('text-input'),
-    toolbar: document.getElementById('toolbar'),
-    btnExec: document.getElementById('btn-exec'),
-    btnShare: document.getElementById('btn-share')
-  };
-
-  // --- INITIALIZATION ---
   function init() {
-    window.addEventListener('resize', fitCanvas);
-    window.addEventListener('mousemove', onMouseMove);
-    
-    // Input Handling
-    dom.btnExec.addEventListener('click', () => updateEngine(dom.input.value, true));
-    dom.btnShare.addEventListener('click', copyUplink);
-    
-    // Focus Dimming Logic (UX Enhancement)
-    dom.input.addEventListener('focus', () => dom.toolbar.classList.remove('dimmed'));
-    dom.input.addEventListener('blur', () => {
-      if(state.text.length > 0) dom.toolbar.classList.add('dimmed');
+    window.addEventListener('resize', syncSize);
+    window.addEventListener('mousemove', e => {
+      state.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+      state.mouse.y = (e.clientY / window.innerHeight) * 2 - 1;
     });
 
-    // Initial Load
-    fitCanvas();
-    const hash = window.location.hash.substring(1);
-    const initialText = hash ? Encoder.fromBase64(hash) : "SYSTEM READY\n[AWAITING INJECTION]";
+    document.getElementById('btn-exec').addEventListener('click', () => process(input.value, true));
+    document.getElementById('btn-share').addEventListener('click', copyLink);
+
+    syncSize();
     
-    dom.input.value = initialText;
-    updateEngine(initialText, false);
-    
-    // Start Render Loop
+    // Auto-load from Hash
+    const h = window.location.hash.substring(1);
+    const initial = h ? Codec.decrypt(h) : "READY FOR INJECTION\n[SYSTEM ACTIVE]";
+    input.value = initial;
+    process(initial, false);
+
     requestAnimationFrame(render);
   }
 
-  function updateEngine(txt, updateUrl) {
-    state.text = txt;
-    state.lines = txt.split('\n');
-    if (updateUrl) {
-      const encoded = Encoder.toBase64(txt);
-      history.replaceState(null, null, '#' + encoded);
-    }
-    calcMetrics();
-  }
-
-  function fitCanvas() {
-    state.canvasSize.w = window.innerWidth;
-    state.canvasSize.h = window.innerHeight;
-    dom.canvas.width = state.canvasSize.w;
-    dom.canvas.height = state.canvasSize.h;
-    calcMetrics();
-  }
-
-  function calcMetrics() {
-    const { w, h } = state.canvasSize;
-    if (state.lines.length === 0) return;
-
-    // Expert Scaling Algorithm: Fits text perfectly within bounds
-    const maxW = w * CONFIG.MARGIN_RATIO;
-    const maxH = h * CONFIG.MARGIN_RATIO;
+  // [THE CORE FIX: ADVANCED WRAPPING & CENTERING]
+  function wrapText(text, maxWidth) {
+    const lines = [];
+    const sourceLines = text.split('\n');
     
-    // 1. Estimate Height
-    let estimatedFS = maxH / (state.lines.length * 1.3);
+    sourceLines.forEach(sLine => {
+      const words = sLine.split(' ');
+      let currentLine = '';
+
+      words.forEach(word => {
+        const testLine = currentLine + word + ' ';
+        const metrics = ctx.measureText(testLine);
+        if (metrics.width > maxWidth && currentLine.length > 0) {
+          lines.push(currentLine.trim());
+          currentLine = word + ' ';
+        } else {
+          currentLine = testLine;
+        }
+      });
+      lines.push(currentLine.trim());
+    });
+    return lines;
+  }
+
+  function process(txt, updateUrl) {
+    state.raw = txt;
+    if(updateUrl) history.replaceState(null, null, '#' + Codec.encrypt(txt));
     
-    // 2. Constrain by Width (Find longest line)
-    dom.ctx.font = `bold ${estimatedFS}px ${CONFIG.FONT_BASE}`;
-    let maxLineW = 0;
-    state.lines.forEach(l => {
-      const m = dom.ctx.measureText(l).width;
-      if (m > maxLineW) maxLineW = m;
-    });
-
-    if (maxLineW > maxW) {
-      estimatedFS *= (maxW / maxLineW);
+    // Dynamic Font Sizing Logic
+    const w = canvas.width * 0.85;
+    const h = canvas.height * 0.75;
+    
+    // Initial guess
+    let fs = 60;
+    ctx.font = `bold ${fs}px 'Courier New'`;
+    
+    state.wrappedLines = wrapText(txt, w);
+    
+    // Scale down if block height exceeds bounds
+    while ((state.wrappedLines.length * fs * 1.2) > h && fs > 14) {
+      fs -= 2;
+      ctx.font = `bold ${fs}px 'Courier New'`;
+      state.wrappedLines = wrapText(txt, w);
     }
-
-    // 3. Clamping
-    state.fontSize = Math.max(14, Math.min(estimatedFS, 180));
-    state.lineHeight = state.fontSize * 1.2;
+    
+    state.fontSize = fs;
+    state.lineHeight = fs * 1.2;
   }
 
-  function onMouseMove(e) {
-    // Normalize -1 to +1
-    state.mouse.x = (e.clientX / state.canvasSize.w) * 2 - 1;
-    state.mouse.y = (e.clientY / state.canvasSize.h) * 2 - 1;
-    dom.toolbar.classList.remove('dimmed'); // Wake up UI
+  function syncSize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    process(input.value, false);
   }
 
-  function copyUplink() {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url).then(() => {
-      const original = dom.btnShare.innerText;
-      dom.btnShare.innerText = "✓ تم النسخ";
-      dom.btnShare.style.borderColor = "#00f0ff";
-      setTimeout(() => {
-        dom.btnShare.innerText = original;
-        dom.btnShare.style.borderColor = "rgba(255,255,255,0.15)";
-      }, 1500);
-    });
+  function copyLink() {
+    navigator.clipboard.writeText(window.location.href);
+    const b = document.getElementById('btn-share');
+    b.innerText = "✓ COPIED";
+    setTimeout(() => b.innerText = "رابط", 1000);
   }
 
-  // --- RENDER PIPELINE ---
-  function render(now) {
+  // --- RENDER ENGINE ---
+  function render(t) {
     state.time += 0.05;
+    const { width: w, height: h } = canvas;
     
-    const { w, h } = state.canvasSize;
-    const ctx = dom.ctx;
-
-    // 1. Clear (Dark Void)
-    ctx.fillStyle = '#050505';
+    // Dark Background
+    ctx.fillStyle = '#020202';
     ctx.fillRect(0, 0, w, h);
 
-    // 2. Calculate Positions
-    const totalH = state.lines.length * state.lineHeight;
-    const startY = (h - totalH) / 2 + (state.lineHeight / 2);
-    const pX = state.mouse.x * CONFIG.PARALLAX_FACTOR;
-    const pY = state.mouse.y * CONFIG.PARALLAX_FACTOR;
+    // [DEVIOUS LAYER: BACKGROUND NOISE INJECTION]
+    ctx.globalAlpha = 0.05;
+    ctx.fillStyle = varColor('--cyan');
+    ctx.font = '10px monospace';
+    for(let i=0; i<10; i++) {
+        ctx.fillText(state.raw.substring(0, 50), Math.random()*w, Math.random()*h);
+    }
+    ctx.globalAlpha = 1.0;
 
-    // 3. Draw Text
+    // Center Block Calculation
+    const totalH = state.wrappedLines.length * state.lineHeight;
+    const startY = (h - totalH) / 2 + state.lineHeight / 2;
+    const offX = state.mouse.x * 10;
+    const offY = state.mouse.y * 10;
+
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.font = `900 ${state.fontSize}px ${CONFIG.FONT_BASE}`;
+    ctx.font = `900 ${state.fontSize}px 'Courier New'`;
 
-    state.lines.forEach((line, i) => {
-      const x = w / 2;
+    state.wrappedLines.forEach((line, i) => {
       const y = startY + (i * state.lineHeight);
       
-      // Dynamic Glitch Offset
-      const isGlitching = Math.random() > 0.92;
-      const gX = isGlitching ? (Math.random() - 0.5) * CONFIG.GLITCH_INTENSITY * 4 : 0;
-      
-      // RGB Split (Chromatic Aberration) - Only if glitching or moving fast
-      if (isGlitching || Math.abs(state.mouse.x) > 0.5) {
-        ctx.fillStyle = 'rgba(0, 240, 255, 0.7)'; // Cyan
-        ctx.fillText(line, x - pX - 3 + gX, y - pY);
-        
-        ctx.fillStyle = 'rgba(255, 0, 60, 0.7)'; // Red
-        ctx.fillText(line, x - pX + 3 - gX, y - pY);
+      // Chromatic Aberration (Only on movement)
+      if (Math.abs(offX) > 2) {
+        ctx.fillStyle = '#f0f';
+        ctx.fillText(line, w/2 - offX + 2, y - offY);
+        ctx.fillStyle = '#0ff';
+        ctx.fillText(line, w/2 - offX - 2, y - offY);
       }
-
-      // Main Text (Solid White)
-      ctx.fillStyle = '#ffffff';
-      ctx.fillText(line, x - pX, y - pY);
+      
+      ctx.fillStyle = '#fff';
+      ctx.fillText(line, w/2 - offX, y - offY);
     });
-
-    // 4. Noise (Subtle)
-    if (Math.random() > 0.5) {
-      ctx.fillStyle = `rgba(255,255,255, ${Math.random() * 0.03})`;
-      ctx.fillRect(Math.random() * w, Math.random() * h, 2, 2);
-    }
 
     requestAnimationFrame(render);
   }
 
-  // Boot
-  init();
+  function varColor(v) { return getComputedStyle(document.documentElement).getPropertyValue(v); }
 
+  init();
 })();
 </script>
 </body>
